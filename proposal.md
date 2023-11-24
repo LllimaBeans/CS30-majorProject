@@ -10,12 +10,11 @@ Game where you grow shrimp, lobsters, and crabs. You can sell the crustaceans to
 - Shop to sell the crustaceans to customers
 - Start screen with intructions
 - Customers with different order requests, 10 minimun, ideally 20+
+- Side menu in farm to select eggs from
 
 ## Nice To Have List
 - Motivation 
-- One of the two
-    - Side menu in farm to select eggs from
-    - A popup when you click on a pool that displays which eggs you can use
+- Many kinds of eggs
 - Store to buy the different eggs
 - Currency, use it to buy eggs and get it from selling to customers
 - Growth hormones for crustaceans 
