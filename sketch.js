@@ -22,6 +22,11 @@ let poolH = 200;
 let poolVerticalDist = 300;
 let poolHorizontalDist = 400;
 
+let birthX = (poolX + poolW) / 2;
+let birthY = (poolY + poolH) / 2;
+
+let shouldGrow = false;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   buttonY = height - 50;
@@ -37,13 +42,50 @@ function mousePressed(){
     shop();
   }
   // Pressing farm
-  if (mouseX > buttonX + buttonSpace && mouseX < buttonX + buttonSpace + buttonW && mouseY > buttonY && mouseY < buttonY + buttonH){
+  else if (mouseX > buttonX + buttonSpace && mouseX < buttonX + buttonSpace + buttonW && mouseY > buttonY && mouseY < buttonY + buttonH){
     farm();
   }
   // Pressing start
-  if (mouseX > buttonX + buttonSpace * 2 && mouseX < buttonX + buttonSpace * 2 + buttonW && mouseY > buttonY && mouseY < buttonY + buttonH){
+  else if (mouseX > buttonX + buttonSpace * 2 && mouseX < buttonX + buttonSpace * 2 + buttonW && mouseY > buttonY && mouseY < buttonY + buttonH){
     start();
   }
+
+  if (mouseX > poolX && mouseX < poolX + poolW && mouseY > poolY && mouseY < poolY + poolH && shouldGrow) {
+    grow();
+    shouldGrow = false;
+  }
+}
+
+function shop() {
+  // Shop
+  background(220);
+
+}
+
+function farm() {
+  // The pools to grow the lovely crustaceans in
+  background(220);
+
+  fill("blue");
+  pool1 = rect(poolX, poolY, poolW, poolH);
+  pool2 = rect(poolX + poolHorizontalDist, poolY, poolW, poolH);
+  pool3 = rect(poolX, poolY + poolVerticalDist, poolW, poolH);
+  pool4 = rect(poolX + poolHorizontalDist, poolY + poolVerticalDist, poolW, poolH);
+
+  shouldGrow = true;
+}
+
+function start() {
+  background(220);
+
+  // Once there's enough game to have something to explain do it here
+}
+
+function grow() {
+  // use millies to make a five second delay 
+  background(0);
+  // fill("red");
+  // rect(birthX. birthY, poolW, poolH);
 }
 
 function buttonCalls() {
@@ -53,35 +95,12 @@ function buttonCalls() {
   let button3 = rect(buttonX + buttonSpace * 2, buttonY, buttonW, buttonH);
 }
 
-function shop() {
-  // Shop
-}
-
-function farm() {
-  // The pools to grow the lovely crustaceans in
-  fill("blue");
-  pool1 = rect(poolX, poolY, poolW, poolH);
-  pool2 = rect(poolX + poolHorizontalDist, poolY, poolW, poolH);
-  pool3 = rect(poolX, poolY + poolVerticalDist, poolW, poolH);
-  pool4 = rect(poolX + poolHorizontalDist, poolY + poolVerticalDist, poolW, poolH);
-
-  // side bar for eggs
-}
-
-function grow() {
-  // make crustaceans grow in here
-}
-
-function start() {
-  // Once there's enough game to have something to explain do it here
-}
-
 class Crustacean {
   constructor(x, y, ) {
-
+    
   }
-
+  
   display() {
-
+    
   }
 }
