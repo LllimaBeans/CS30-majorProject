@@ -11,9 +11,12 @@ Game where you grow shrimp, lobsters, and crabs. You can sell the crustaceans to
 - Start screen with intructions
 - Customers with different order requests, 10 minimun, ideally 20+
 - Side menu in farm to select eggs from
+- Sounds
+    - Different background music depending on which screen (shop, farm, etc)
+    - Sound effects when doing things (harvesting, selling, etc)
+- Motivation 
 
 ## Nice To Have List
-- Motivation 
 - Many kinds of eggs
 - Store to buy the different eggs
 - Currency, use it to buy eggs and get it from selling to customers

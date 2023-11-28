@@ -7,14 +7,15 @@
 
 let whichScreen = "start";
 
+// Placements for the buttons that toggle which screen
 let buttonX = 50;
 let buttonY;
 let buttonW = 50;
 let buttonH = 30;
 let buttonSpace = 100;
 
+// Making the pools as global variables and assigning placements
 let pool1, pool2, pool3, pool4;
-
 let poolX = 150;
 let poolY = 100;
 let poolW = 250;
@@ -22,10 +23,19 @@ let poolH = 200;
 let poolVerticalDist = 300;
 let poolHorizontalDist = 400;
 
+// Where the crustaceans should spawn in the pools
 let birthX = (poolX + poolW) / 2;
 let birthY = (poolY + poolH) / 2;
+let birthW = 20;
+let birthH = 20;
 
+// Temp? variable for if the pools should work
 let shouldGrow = false;
+
+// Will be used with millis for wait time in growing crustaceans
+let waitTime = 5000;
+let startTime = 0;
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -34,6 +44,14 @@ function setup() {
 
 function draw() {
   buttonCalls();
+
+}
+
+function buttonCalls() {
+  fill("black");
+  let button1 = rect(buttonX, buttonY, buttonW, buttonH);
+  let button2 = rect(buttonX + buttonSpace, buttonY, buttonW, buttonH);
+  let button3 = rect(buttonX + buttonSpace * 2, buttonY, buttonW, buttonH);
 }
 
 function mousePressed(){
@@ -50,6 +68,7 @@ function mousePressed(){
     start();
   }
 
+  // Making them grow when pool is clicked, eggs will be added later
   if (mouseX > poolX && mouseX < poolX + poolW && mouseY > poolY && mouseY < poolY + poolH && shouldGrow) {
     grow();
     shouldGrow = false;
@@ -83,16 +102,12 @@ function start() {
 
 function grow() {
   // use millies to make a five second delay 
-  background(0);
-  // fill("red");
-  // rect(birthX. birthY, poolW, poolH);
-}
+  startTime = millis();
+  if (millis() < startTime + waitTime) {
+    fill("red");
+    rect(birthX, birthY, birthW, birthH);
+  }
 
-function buttonCalls() {
-  fill("black");
-  let button1 = rect(buttonX, buttonY, buttonW, buttonH);
-  let button2 = rect(buttonX + buttonSpace, buttonY, buttonW, buttonH);
-  let button3 = rect(buttonX + buttonSpace * 2, buttonY, buttonW, buttonH);
 }
 
 class Crustacean {
