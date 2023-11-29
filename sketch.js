@@ -30,12 +30,15 @@ let birthW = 20;
 let birthH = 20;
 
 // Temp? variable for if the pools should work
-let shouldGrow = false;
+let shouldGrow1 = false;
+let shouldGrow2 = false;
+let shouldGrow3 = false;
+let shouldGrow4 = false;
 
 // Will be used with millis for wait time in growing crustaceans
 let waitTime = 5000;
-let startTime = 0;
-
+let startTime1, startTime2, startTime3, startTime4;
+let oneClicked, twoClicked, threeClicked, fourClicked;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -48,6 +51,7 @@ function draw() {
 }
 
 function buttonCalls() {
+  // Draws the buttons, only the appearance not function
   fill("black");
   let button1 = rect(buttonX, buttonY, buttonW, buttonH);
   let button2 = rect(buttonX + buttonSpace, buttonY, buttonW, buttonH);
@@ -69,14 +73,39 @@ function mousePressed(){
   }
 
   // Making them grow when pool is clicked, eggs will be added later
-  if (mouseX > poolX && mouseX < poolX + poolW && mouseY > poolY && mouseY < poolY + poolH && shouldGrow) {
+
+  // Pool1 able to be clicked
+  if (mouseX > poolX && mouseX < poolX + poolW && mouseY > poolY && mouseY < poolY + poolH && shouldGrow1) {
+    startTime1 = millis();
     grow();
-    shouldGrow = false;
+    shouldGrow1 = false;
+  }
+
+  // Pool2
+  if (mouseX > poolX + poolHorizontalDist && mouseX < poolX + poolW + poolHorizontalDist && mouseY > poolY && mouseY < poolY + poolH && shouldGrow2) {
+    startTime1 = millis();
+    grow();
+    shouldGrow2 = false;
+  }
+
+  // Pool3
+  if (mouseX > poolX && mouseX < poolX + poolW && mouseY > poolY + poolVerticalDist && mouseY < poolY + poolH + poolVerticalDist && shouldGrow3) {
+    startTime1 = millis();
+    grow();
+    shouldGrow3 = false;
+  }
+
+  // Pool4
+  if (mouseX > poolX + poolHorizontalDist && mouseX < poolX + poolW + poolHorizontalDist && mouseY > poolY + poolVerticalDist && mouseY < poolY + poolH + poolVerticalDist && shouldGrow3) {
+    startTime1 = millis();
+    grow();
+    shouldGrow4 = false;
   }
 }
 
 function shop() {
-  // Shop
+  // Will be shop
+  // For now it is only background
   background(220);
 
 }
@@ -91,7 +120,7 @@ function farm() {
   pool3 = rect(poolX, poolY + poolVerticalDist, poolW, poolH);
   pool4 = rect(poolX + poolHorizontalDist, poolY + poolVerticalDist, poolW, poolH);
 
-  shouldGrow = true;
+  shouldGrow1 = true;
 }
 
 function start() {
@@ -101,11 +130,26 @@ function start() {
 }
 
 function grow() {
-  // use millies to make a five second delay 
-  startTime = millis();
-  if (millis() < startTime + waitTime) {
+  // Use millies to make a five second delay 
+  // Top left pool
+  if (millis() < startTime1 + waitTime && oneClicked) {
     fill("red");
     rect(birthX, birthY, birthW, birthH);
+  }
+  // Top right pool
+  if (millis() < startTime2 + waitTime && twoClicked) {
+    fill("red");
+    rect(birthX + poolW, birthY, birthW, birthH);
+  }
+  // Bottom left pool
+  if (millis() < startTime3 + waitTime && threeClicked) {
+    fill("red");
+    rect(birthX, birthY + poolH, birthW, birthH);
+  }
+  // Bottom right pool
+  if (millis() < startTime4 + waitTime && fourClicked) {
+    fill("red");
+    rect(birthX + poolW, birthY + poolH, birthW, birthH);
   }
 
 }
