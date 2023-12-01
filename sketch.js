@@ -155,11 +155,17 @@ function grow() {
 }
 
 class Crustacean {
-  constructor(x, y, ) {
-    
+  constructor(x, y, theImage) {
+    this.x = x;
+    this.y = y;
+    this.theImage = theImage;
+    this.sizeW = 20;
+    this.sizeH = 25;
   }
   
   display() {
-    
+    image(this.theImage, this.x, this.y, this.sizeW, this.sizeH);
   }
+
+  
 }
