@@ -40,22 +40,46 @@ let waitTime = 5000;
 let startTime1, startTime2, startTime3, startTime4;
 let oneClicked, twoClicked, threeClicked, fourClicked;
 
+// Different images for background
+// let bgStart = 
+// let bgFarm = 
+// let bgShop = 
+
+function preload() {
+  // When you get around to images
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  // Temp background, get a sprite or smth
+  background(220);
   buttonY = height - 50;
 }
 
 function draw() {
+  // Display buttons
   buttonCalls();
-
 }
 
 function buttonCalls() {
-  // Draws the buttons, only the appearance not function
+  // Draws the buttons, only appearance not the functionality
   fill("black");
-  let button1 = rect(buttonX, buttonY, buttonW, buttonH);
-  let button2 = rect(buttonX + buttonSpace, buttonY, buttonW, buttonH);
-  let button3 = rect(buttonX + buttonSpace * 2, buttonY, buttonW, buttonH);
+  rect(buttonX, buttonY, buttonW, buttonH);
+  rect(buttonX + buttonSpace, buttonY, buttonW, buttonH);
+  rect(buttonX + buttonSpace * 2, buttonY, buttonW, buttonH);
+}
+
+// Use for backgrounds? Maybe?
+function displayScreen() {
+  // if (whichScreen === "start") {
+  //   displayStart();
+  // }
+  // else if (whichScreen === "farm") {
+  //   displayFarm();
+  // }
+  // else if (whichScreen === "shop") {
+  //   displayShop();
+  // }
 }
 
 function mousePressed(){
