@@ -151,28 +151,27 @@ function start() {
   background(220);
 
   // Once there's enough game to have something to explain do it here
+  // Probably just make an image elsewhere that has instructions on it, like a title page
+  // Figuring out text seems like a waste of time
 }
 
 function grow() {
   // Use millies to make a five second delay 
   // Top left pool
+  fill("red");
   if (millis() < startTime1 + waitTime && oneClicked) {
-    fill("red");
     rect(birthX, birthY, birthW, birthH);
   }
   // Top right pool
   if (millis() < startTime2 + waitTime && twoClicked) {
-    fill("red");
     rect(birthX + poolW, birthY, birthW, birthH);
   }
   // Bottom left pool
   if (millis() < startTime3 + waitTime && threeClicked) {
-    fill("red");
     rect(birthX, birthY + poolH, birthW, birthH);
   }
   // Bottom right pool
   if (millis() < startTime4 + waitTime && fourClicked) {
-    fill("red");
     rect(birthX + poolW, birthY + poolH, birthW, birthH);
   }
 
@@ -187,9 +186,16 @@ class Crustacean {
     this.sizeH = 25;
   }
   
+  // Use this to display crustaceans when growing
   display() {
     image(this.theImage, this.x, this.y, this.sizeW, this.sizeH);
   }
 
-  
+  // Use this to make them grow, image of "planted" and then full grown
+  update() {
+
+  }
 }
+
+// Make millis work
+// Start designing store
