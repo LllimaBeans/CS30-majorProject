@@ -199,3 +199,11 @@ class Crustacean {
 
 // Make millis work
 // Start designing store
+
+// In store there should be some type of cash register
+// Have a place that either displays pictures with text or the text itself
+// proper text is probably the way to go if i can figure it out
+
+// maybe have some type of background fo rthe buttons
+
+// mk hatvestet thng work --> GOTTA get  the miilsls
