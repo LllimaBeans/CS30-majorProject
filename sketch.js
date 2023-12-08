@@ -97,31 +97,35 @@ function mousePressed(){
   }
 
   // Making them grow when pool is clicked, eggs will be added later
-
+  
   // Pool1 able to be clicked
   if (mouseX > poolX && mouseX < poolX + poolW && mouseY > poolY && mouseY < poolY + poolH && shouldGrow1) {
     startTime1 = millis();
+    oneClicked = true; // Set the corresponding flag
     grow();
     shouldGrow1 = false;
   }
 
   // Pool2
   if (mouseX > poolX + poolHorizontalDist && mouseX < poolX + poolW + poolHorizontalDist && mouseY > poolY && mouseY < poolY + poolH && shouldGrow2) {
-    startTime1 = millis();
+    startTime2 = millis();
+    twoClicked = true;
     grow();
     shouldGrow2 = false;
   }
 
   // Pool3
   if (mouseX > poolX && mouseX < poolX + poolW && mouseY > poolY + poolVerticalDist && mouseY < poolY + poolH + poolVerticalDist && shouldGrow3) {
-    startTime1 = millis();
+    startTime3 = millis();
+    threeClicked = true;
     grow();
     shouldGrow3 = false;
   }
 
   // Pool4
-  if (mouseX > poolX + poolHorizontalDist && mouseX < poolX + poolW + poolHorizontalDist && mouseY > poolY + poolVerticalDist && mouseY < poolY + poolH + poolVerticalDist && shouldGrow3) {
-    startTime1 = millis();
+  if (mouseX > poolX + poolHorizontalDist && mouseX < poolX + poolW + poolHorizontalDist && mouseY > poolY + poolVerticalDist && mouseY < poolY + poolH + poolVerticalDist && shouldGrow4) {
+    startTime4 = millis();
+    fourClicked = true;
     grow();
     shouldGrow4 = false;
   }
@@ -156,26 +160,30 @@ function start() {
 }
 
 function grow() {
-  // Use millies to make a five second delay 
+  // Use millis to make a five-second delay
+  // Do something that allows them to be harvested, like clicking after they've spawned
   // Top left pool
-  fill("red");
-  if (millis() < startTime1 + waitTime && oneClicked) {
+  if (oneClicked && millis() - startTime1 < waitTime) {
+    fill("red");
     rect(birthX, birthY, birthW, birthH);
   }
   // Top right pool
-  if (millis() < startTime2 + waitTime && twoClicked) {
+  if (twoClicked && millis() - startTime2 < waitTime) {
+    fill("red");
     rect(birthX + poolW, birthY, birthW, birthH);
   }
   // Bottom left pool
-  if (millis() < startTime3 + waitTime && threeClicked) {
+  if (threeClicked && millis() - startTime3 < waitTime) {
+    fill("red");
     rect(birthX, birthY + poolH, birthW, birthH);
   }
   // Bottom right pool
-  if (millis() < startTime4 + waitTime && fourClicked) {
+  if (fourClicked && millis() - startTime4 < waitTime) {
+    fill("red");
     rect(birthX + poolW, birthY + poolH, birthW, birthH);
   }
-
 }
+
 
 class Crustacean {
   constructor(x, y, theImage) {
@@ -206,4 +214,4 @@ class Crustacean {
 
 // maybe have some type of background fo rthe buttons
 
-// mk hatvestet thng work --> GOTTA get  the miilsls
+// make the harvest thing work --> gotta get millis working
