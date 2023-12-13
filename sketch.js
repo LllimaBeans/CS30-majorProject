@@ -5,6 +5,7 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
+
 let whichScreen = "start";
 
 // Placements for the buttons that toggle which screen
@@ -16,12 +17,12 @@ let buttonSpace = 100;
 
 // Making the pools as global variables and assigning placements
 let pool1, pool2, pool3, pool4;
-let poolX = 150;
-let poolY = 100;
-let poolW = 250;
-let poolH = 200;
-let poolVerticalDist = 300;
-let poolHorizontalDist = 400;
+let poolX;
+let poolY;
+let poolW;
+let poolH;
+let poolVerticalDist;
+let poolHorizontalDist;
 
 // Where the crustaceans should spawn in the pools
 let birthX = (poolX + poolW) / 2;
@@ -30,10 +31,10 @@ let birthW = 20;
 let birthH = 20;
 
 // Temp? variable for if the pools should work
-let shouldGrow1 = false;
-let shouldGrow2 = false;
-let shouldGrow3 = false;
-let shouldGrow4 = false;
+let canGrow1 = false;
+let canGrow2 = false;
+let canGrow3 = false;
+let canGrow4 = false;
 
 // Will be used with millis for wait time in growing crustaceans
 let waitTime = 5000;
@@ -54,6 +55,13 @@ function setup() {
   // Temp background, get a sprite or smth
   background(220);
   buttonY = height - 50;
+
+  poolX = width/10;
+  poolY = height/6;
+  poolW = width/6;
+  poolH = height/5;
+  poolVerticalDist = height/3;
+  poolHorizontalDist = width/4;
 }
 
 function draw() {
@@ -99,35 +107,35 @@ function mousePressed(){
   // Making them grow when pool is clicked, eggs will be added later
   
   // Pool1 able to be clicked
-  if (mouseX > poolX && mouseX < poolX + poolW && mouseY > poolY && mouseY < poolY + poolH && shouldGrow1) {
+  if (mouseX > poolX && mouseX < poolX + poolW && mouseY > poolY && mouseY < poolY + poolH && canGrow1) {
     startTime1 = millis();
     oneClicked = true; // Set the corresponding flag
     grow();
-    shouldGrow1 = false;
+    canGrow1 = false;
   }
 
   // Pool2
-  if (mouseX > poolX + poolHorizontalDist && mouseX < poolX + poolW + poolHorizontalDist && mouseY > poolY && mouseY < poolY + poolH && shouldGrow2) {
+  if (mouseX > poolX + poolHorizontalDist && mouseX < poolX + poolW + poolHorizontalDist && mouseY > poolY && mouseY < poolY + poolH && canGrow2) {
     startTime2 = millis();
     twoClicked = true;
     grow();
-    shouldGrow2 = false;
+    canGrow2 = false;
   }
 
   // Pool3
-  if (mouseX > poolX && mouseX < poolX + poolW && mouseY > poolY + poolVerticalDist && mouseY < poolY + poolH + poolVerticalDist && shouldGrow3) {
+  if (mouseX > poolX && mouseX < poolX + poolW && mouseY > poolY + poolVerticalDist && mouseY < poolY + poolH + poolVerticalDist && canGrow3) {
     startTime3 = millis();
     threeClicked = true;
     grow();
-    shouldGrow3 = false;
+    canGrow3 = false;
   }
 
   // Pool4
-  if (mouseX > poolX + poolHorizontalDist && mouseX < poolX + poolW + poolHorizontalDist && mouseY > poolY + poolVerticalDist && mouseY < poolY + poolH + poolVerticalDist && shouldGrow4) {
+  if (mouseX > poolX + poolHorizontalDist && mouseX < poolX + poolW + poolHorizontalDist && mouseY > poolY + poolVerticalDist && mouseY < poolY + poolH + poolVerticalDist && canGrow4) {
     startTime4 = millis();
     fourClicked = true;
     grow();
-    shouldGrow4 = false;
+    canGrow4 = false;
   }
 }
 
@@ -148,7 +156,10 @@ function farm() {
   pool3 = rect(poolX, poolY + poolVerticalDist, poolW, poolH);
   pool4 = rect(poolX + poolHorizontalDist, poolY + poolVerticalDist, poolW, poolH);
 
-  shouldGrow1 = true;
+  canGrow1 = true;
+  canGrow2 = true;
+  canGrow3 = true;
+  canGrow3 = true;
 }
 
 function start() {
@@ -214,4 +225,6 @@ class Crustacean {
 
 // maybe have some type of background fo rthe buttons
 
-// make the harvest thing work --> gotta get millis working
+// make the harvest thing work --> gotta get millis working  
+
+// Probably stop hardcoding the sizes of things
